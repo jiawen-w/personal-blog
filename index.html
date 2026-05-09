@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈佳文 · 内容运营</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --surface: #1c1c28;
+    --border: #2a2a3a;
+    --accent: #f5a623;
+    --accent2: #e8834a;
+    --text: #e8e8f0;
+    --text2: #9898b0;
+    --text3: #5a5a78;
+    --green: #4ade80;
+    --blue: #60a5fa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', 'Noto Serif SC', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: #0a0a0f;
+    border: none;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,166,35,0.1);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--accent);
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-title {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: var(--text2);
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+  }
+  .hero-title strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-stat-num {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0f;
+    border: none;
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px; left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text3);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--text3);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { width: 20px; opacity: 0.3; }
+    50% { width: 60px; opacity: 1; }
+    100% { width: 20px; opacity: 0.3; }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+    max-width: 200px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 60px;
+    color: var(--text);
+  }
+
+  /* ─── MEDIA MATRIX ─── */
+  #matrix {
+    background: var(--bg2);
+    max-width: 100%;
+    padding: 100px 48px;
+  }
+  #matrix-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .matrix-card {
+    background: var(--surface);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .matrix-card:hover { background: #212130; }
+  .matrix-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--card-accent, var(--accent));
+  }
+  .matrix-platform {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--card-accent, var(--accent));
+    margin-bottom: 8px;
+  }
+  .matrix-account {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .matrix-num {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--card-accent, var(--accent));
+    line-height: 1;
+    margin-bottom: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .matrix-unit {
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+  }
+  .matrix-desc {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .matrix-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .exp-item {
+    background: var(--surface);
+    padding: 40px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .exp-item:hover { background: #212130; }
+  .exp-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+  .exp-company {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .exp-role {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .exp-meta {
+    font-size: 13px;
+    color: var(--text3);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .exp-meta::before { content: '·'; }
+  .exp-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .exp-date-range {
+    font-size: 13px;
+    color: var(--text2);
+    font-family: 'Space Grotesk', sans-serif;
+    white-space: nowrap;
+  }
+  .exp-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    color: var(--text3);
+  }
+  .exp-badge.current {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(245,166,35,0.08);
+  }
+  .exp-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .exp-achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .exp-achievement {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .exp-achievement-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .exp-highlights {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .highlight-chip {
+    background: rgba(245,166,35,0.08);
+    border: 1px solid rgba(245,166,35,0.2);
+    color: var(--accent);
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .highlight-chip.blue {
+    background: rgba(96,165,250,0.08);
+    border-color: rgba(96,165,250,0.25);
+    color: var(--blue);
+  }
+  .highlight-chip.green {
+    background: rgba(74,222,128,0.08);
+    border-color: rgba(74,222,128,0.25);
+    color: var(--green);
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--bg2); max-width: 100%; padding: 100px 48px; }
+  #skills-inner { max-width: 1200px; margin: 0 auto; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .skill-card {
+    background: var(--surface);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+  .skill-card:hover { background: #212130; }
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .skill-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .skill-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .skill-tag {
+    background: var(--bg3);
+    color: var(--text2);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border);
+  }
+
+  /* ─── SOCIAL LINKS ─── */
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .social-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    padding: 20px 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s;
+  }
+  .social-link:hover { background: #212130; }
+  .social-link:hover .social-arrow { transform: translate(3px, -3px); }
+  .social-icon {
+    width: 40px; height: 40px;
+    border-radius: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--bg);
+  }
+  .social-info { flex: 1; }
+  .social-name {
+    font-size: 14px; font-weight: 600; color: var(--text);
+    margin-bottom: 2px;
+  }
+  .social-meta { font-size: 12px; color: var(--text3); }
+  .social-fans {
+    font-size: 20px; font-weight: 700;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: right;
+  }
+  .social-fans span { font-size: 12px; color: var(--text3); display: block; }
+  .social-arrow { color: var(--accent); font-size: 16px; transition: transform 0.2s; }
+
+  /* ─── PORTFOLIO ─── */
+  .portfolio-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+  }
+  .portfolio-tab {
+    padding: 10px 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--surface);
+    color: var(--text3);
+    border: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .portfolio-tab.active {
+    background: var(--accent);
+    color: #0a0a0f;
+  }
+  .portfolio-panel { display: none; }
+  .portfolio-panel.active { display: block; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .portfolio-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .portfolio-card {
+    background: var(--surface);
+    padding: 28px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: block;
+    color: var(--text);
+  }
+  .portfolio-card:hover { background: #212130; }
+  .portfolio-card:hover .portfolio-arrow { transform: translate(4px, -4px); }
+  .portfolio-platform {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 10px;
+  }
+  .portfolio-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .portfolio-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .portfolio-arrow {
+    position: absolute;
+    top: 20px; right: 20px;
+    color: var(--accent);
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  .portfolio-stat {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .portfolio-stat strong { color: var(--accent); font-size: 13px; }
+  .portfolio-list {
+    background: var(--surface);
+    padding: 12px 0;
+  }
+  .portfolio-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 28px;
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.5;
+  }
+  .portfolio-list-item:last-child { border-bottom: none; }
+  .portfolio-list-item:hover { background: rgba(245,166,35,0.04); color: var(--text); }
+  .portfolio-list-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact-wrap {
+    background: var(--bg);
+    max-width: 100%;
+    padding: 100px 48px;
+    border-top: 1px solid var(--border);
+  }
+  #contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .contact-big span { color: var(--accent); }
+  .contact-sub {
+    font-size: 16px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: rgba(245,166,35,0.05); }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(245,166,35,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .contact-link-label {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .contact-info-box {
+    background: var(--surface);
+    padding: 48px 40px;
+    border-left: 3px solid var(--accent);
+  }
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 28px;
+  }
+  .info-row:last-child { margin-bottom: 0; }
+  .info-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .info-value {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .info-value.accent { color: var(--accent); font-size: 20px; font-weight: 700; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg);
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text3);
+  }
+
+  /* ─── HERO PHOTO ─── */
+  .hero-flex { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero-photo-wrap { flex-shrink: 0; position: relative; }
+  .hero-photo-frame {
+    width: 280px; height: 360px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  }
+  .hero-photo {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .hero-photo-corner {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    background: var(--accent);
+    z-index: -1;
+  }
+  .hero-photo-frame::before {
+    content: '陈佳文 · CHEN JIAWEN';
+    position: absolute;
+    top: -32px; left: 0;
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--accent); font-weight: 700;
+  }
+
+  /* ─── MODAL ─── */
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(5,5,10,0.85);
+    backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .modal-backdrop.show { display: flex; }
+  .modal-card {
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    padding: 48px 40px 36px;
+    max-width: 440px; width: 100%;
+    position: relative;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+  .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; color: var(--text2);
+    font-size: 28px; cursor: pointer; line-height: 1;
+  }
+  .modal-close:hover { color: var(--accent); }
+  .modal-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .modal-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; margin-bottom: 28px; }
+  .modal-row { display: flex; gap: 24px; padding: 16px 0; border-top: 1px solid var(--border); }
+  .modal-row-label { width: 64px; font-size: 12px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; padding-top: 2px; }
+  .modal-row-value { font-size: 16px; color: var(--text); font-weight: 500; font-family: 'Space Grotesk', sans-serif; }
+  .modal-row-value.link { text-decoration: none; }
+  .modal-row-value.link:hover { color: var(--accent); }
+  .modal-hint { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); letter-spacing: 0.05em; }
+  @media (max-width: 900px) {
+    .hero-flex { flex-direction: column-reverse; gap: 40px; align-items: flex-start; }
+    .hero-photo-frame { width: 200px; height: 260px; }
+  }
+
+  /* ─── NUMBER ANIMATION ─── */
+  .count-up { display: inline-block; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, #matrix, #skills, #contact-wrap { padding: 60px 24px; }
+    #hero { padding: 100px 24px 60px; }
+    .hero-stats { gap: 32px; }
+    .matrix-grid { grid-template-columns: 1fr; }
+    .matrix-bottom { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    #contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .scroll-hint { display: none; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">陈佳文</div>
+  <ul class="nav-links">
+    <li><a href="#matrix">自媒体</a></li>
+    <li><a href="#experience">经历</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#portfolio">作品</a></li>
+    <li><a href="https://github.com/jiawen-w" target="_blank">GitHub</a></li>
+    <li><a href="#contact-wrap">联系</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact-modal').classList.add('show')">立即联系</button>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-flex">
+  <div class="hero-text">
+  <div class="hero-tag">内容运营 / 新媒体运营 · 10年+经验 · 在职求职</div>
+  <h1 class="hero-name">陈<span>佳文</span></h1>
+  <p class="hero-title">
+    <strong>内容运营 / 新媒体运营</strong> ·&nbsp;
+    猿辅导 → 作业帮 → 腾讯 → 传智教育 → 艾瞰未来
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num count-up" data-target="26" data-suffix="万+">0</span>
+      <span class="hero-stat-label">自媒体矩阵粉丝</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num count-up" data-target="1000" data-suffix="+篇">0</span>
+      <span class="hero-stat-label">原创稿件累计</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num count-up" data-target="170" data-suffix="+场">0</span>
+      <span class="hero-stat-label">直播场次/年</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num count-up" data-target="10" data-suffix="年+">0</span>
+      <span class="hero-stat-label">全域内容运营经验</span>
+    </div>
+  </div>
+  <div class="hero-actions">
+    <a href="#contact-wrap" class="btn-primary">联系我</a>
+    <a href="#experience" class="btn-outline">查看经历</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>向下滚动</span>
+  </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame">
+      <img src="assets/profile.jpg" alt="陈佳文" class="hero-photo">
+      <div class="hero-photo-corner"></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contact-modal" class="modal-backdrop" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="modal-card">
+    <button class="modal-close" onclick="document.getElementById('contact-modal').classList.remove('show')">×</button>
+    <div class="modal-label">立即联系</div>
+    <div class="modal-title">陈佳文</div>
+    <div class="modal-row">
+      <div class="modal-row-label">微信</div>
+      <div class="modal-row-value">13041242172</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-row-label">电话</div>
+      <a href="tel:13041242172" class="modal-row-value link">130 4124 2172</a>
+    </div>
+    <div class="modal-row">
+      <div class="modal-row-label">邮箱</div>
+      <a href="mailto:1530575467@qq.com" class="modal-row-value link">1530575467@qq.com</a>
+    </div>
+    <div class="modal-hint">期待与你一起做好内容 · 16k–20k · 北京</div>
+  </div>
+</div>
+
+<!-- MEDIA MATRIX -->
+<div id="matrix">
+  <div id="matrix-inner">
+    <div class="section-label">个人自媒体矩阵</div>
+    <h2 class="section-title">AI 辅助运维，<br>全域影响力</h2>
+    <!-- Social Links Row -->
+    <div class="social-links">
+      <a href="https://www.zhihu.com/people/yuan_xing_ke" target="_blank" class="social-link">
+        <div class="social-icon" style="background:#3b82f6">知</div>
+        <div class="social-info">
+          <div class="social-name">知乎 · 忽如远行客</div>
+          <div class="social-meta">科技 / AI / 认知 · 总阅读4000万</div>
+        </div>
+        <div class="social-fans"><span class="count-up" data-target="14" data-suffix="万">0</span><span>粉丝</span></div>
+        <div class="social-arrow">↗</div>
+      </a>
+      <a href="https://space.bilibili.com/59190484" target="_blank" class="social-link">
+        <div class="social-icon" style="background:#06b6d4">B</div>
+        <div class="social-info">
+          <div class="social-name">B站 · 偶尔也读书</div>
+          <div class="social-meta">读书 / 数据分析 · 单视频最高59万播放</div>
+        </div>
+        <div class="social-fans"><span class="count-up" data-target="8.2" data-suffix="万">0</span><span>粉丝</span></div>
+        <div class="social-arrow">↗</div>
+      </a>
+      <a href="https://www.xiaohongshu.com/user/profile/61c463f9000000001000eff9" target="_blank" class="social-link">
+        <div class="social-icon" style="background:#f43f5e">书</div>
+        <div class="social-info">
+          <div class="social-name">小红书 · 3个账号</div>
+          <div class="social-meta">英语 / 时尚 / 文化 · AI自动化剪辑</div>
+        </div>
+        <div class="social-fans"><span class="count-up" data-target="3.6" data-suffix="万+">0</span><span>粉丝</span></div>
+        <div class="social-arrow">↗</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/TCeHKlfBd4zCe9mxrYEJ6Q" target="_blank" class="social-link">
+        <div class="social-icon" style="background:#10b981">公</div>
+        <div class="social-info">
+          <div class="social-name">公众号 · 偶尔也读书</div>
+          <div class="social-meta">文化 / 读书 · 图文总赞藏1.2万+</div>
+        </div>
+        <div class="social-fans"><span class="count-up" data-target="1.2" data-suffix="万">0</span><span>粉丝</span></div>
+        <div class="social-arrow">↗</div>
+      </a>
+    </div>
+    <div class="matrix-grid">
+      <div class="matrix-card" style="--card-accent: #3b82f6">
+        <div class="matrix-platform">知乎 · 科技领域</div>
+        <div class="matrix-account">忽如远行客</div>
+        <div class="matrix-num">4000<span style="font-size:20px;font-weight:400">万</span></div>
+        <div class="matrix-unit">总阅读量</div>
+        <div class="matrix-desc">AI软件推荐、认知科学、前沿科技深度回答，热门回答「有哪些鲜为人知的网站」<strong style="color:var(--blue)">500万阅读·5.5万赞</strong></div>
+      </div>
+      <div class="matrix-card" style="--card-accent: #06b6d4">
+        <div class="matrix-platform">B站 · 读书领域</div>
+        <div class="matrix-account">偶尔也读书</div>
+        <div class="matrix-num count-up" data-target="59" data-suffix="万">0</div>
+        <div class="matrix-unit">单视频最高播放</div>
+        <div class="matrix-desc">读书 / 职场 / 数据分析视频内容，深度图文 + 短视频组合输出</div>
+      </div>
+      <div class="matrix-card" style="--card-accent: #f43f5e">
+        <div class="matrix-platform">小红书 · 时尚领域</div>
+        <div class="matrix-account">女神混剪</div>
+        <div class="matrix-num">5000<span style="font-size:20px;font-weight:400">+</span></div>
+        <div class="matrix-unit">均播放 / 条</div>
+        <div class="matrix-desc">自主研发 <strong style="color:#f43f5e">Python 人脸识别 AI 程序</strong>实现视频自动化剪辑与发布，运营半年稳定产出</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">工作经历</div>
+  <h2 class="section-title">从独角兽到上市企业，<br>全链路内容操盘手</h2>
+  <div class="exp-list">
+
+    <!-- 艾瞰未来 -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">艾瞰未来（北京）科技有限公司</div>
+          <div class="exp-role">内容运营经理</div>
+          <div class="exp-meta">品牌市场部 · 北京</div>
+        </div>
+        <div class="exp-date">
+          <div class="exp-date-range">2023.12 — 至今</div>
+          <div class="exp-badge current">在职</div>
+        </div>
+      </div>
+      <div class="exp-desc">全面负责 iCANX、iCAN大赛、NexAI奈势学城全域内容运营，搭建「公众号 + 视频号 + 多平台 + 活动一体化」内容生态，深度聚焦 AI 与前沿科技 / 赛事活动领域。</div>
+      <div class="exp-achievements">
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">01</div>
+          <div><strong style="color:var(--text)">内容全链路：</strong>2年+ 累计产出 500余篇原创稿件，2025年发布254篇，累计阅读 <strong style="color:var(--accent)">35万+</strong>；iCANX 粉丝从1.5万增至 <strong style="color:var(--accent)">3.08万</strong>，iCAN 大赛账号从8万增至 <strong style="color:var(--accent)">11万</strong>。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">02</div>
+          <div><strong style="color:var(--text)">媒体对接：</strong>主导 <strong style="color:var(--accent)">40+场</strong>品牌峰会 / 学术联赛全案执行，稿件覆盖新华网、央视网、新浪等主流媒体。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">03</div>
+          <div><strong style="color:var(--text)">直播体系：</strong>全年稳定执行 <strong style="color:var(--accent)">170+场</strong>直播，总观看 <strong style="color:var(--accent)">50万+</strong>，总互动 <strong style="color:var(--accent)">10万+</strong>。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">04</div>
+          <div><strong style="color:var(--text)">短视频：</strong>AI 辅助剪辑，单条视频最高播放 <strong style="color:var(--accent)">23万+</strong>；对接中国移动、正大集团等品牌内容合作。</div>
+        </div>
+      </div>
+      <div class="exp-highlights">
+        <span class="highlight-chip">iCANX</span>
+        <span class="highlight-chip">iCAN大赛</span>
+        <span class="highlight-chip">AI直播</span>
+        <span class="highlight-chip blue">新华网发稿</span>
+        <span class="highlight-chip green">中国移动合作</span>
+      </div>
+    </div>
+
+    <!-- 传智教育 -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">传智教育 · A股上市企业</div>
+          <div class="exp-role">内容运营</div>
+          <div class="exp-meta">总部营销中心 · 北京</div>
+        </div>
+        <div class="exp-date">
+          <div class="exp-date-range">2022.01 — 2023.10</div>
+          <div class="exp-badge">离职</div>
+        </div>
+      </div>
+      <div class="exp-desc">负责黑马程序员旗下公众号、B站、小红书、视频号、抖音等全平台运营，聚焦 Python、大数据、AI、Java、前端等学科内容策划与流量转化，独立操盘从内容生产到投放转化全链路。</div>
+      <div class="exp-achievements">
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">01</div>
+          <div><strong style="color:var(--text)">B站爆款运营：</strong>与讲师团队联合策划 Python 系列课程，单条最高播放 <strong style="color:var(--accent)">1200万</strong>，搜索「python」关键词全站排名<strong style="color:var(--accent)">第二</strong>，账号月均涨粉 5000+。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">02</div>
+          <div><strong style="color:var(--text)">知乎高客单引流：</strong>持续输出 Python/大数据/AI 专业回答 <strong style="color:var(--accent)">200+</strong>篇，建立技术专家人设，成功转化 <strong style="color:var(--accent)">30+</strong>人，客单价 <strong style="color:var(--accent)">24800元</strong>，转化总额 70万+。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">03</div>
+          <div><strong style="color:var(--text)">小红书 + 视频号 + 抖音矩阵：</strong>主导竖版短视频策划与制作，单篇最高点赞 <strong style="color:var(--accent)">1万+</strong>，「程序员延寿指南」等爆款选题打中目标用户痛点，全域分发覆盖。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">04</div>
+          <div><strong style="color:var(--text)">公众号内容生产：</strong>独立完成选题、撰稿、排版、发布、数据复盘，2年累计原创推文 <strong style="color:var(--accent)">300+</strong>篇，覆盖技术教程、行业分析、品牌活动。</div>
+        </div>
+      </div>
+      <div class="exp-highlights">
+        <span class="highlight-chip">黑马程序员</span>
+        <span class="highlight-chip blue">B站1200万播放</span>
+        <span class="highlight-chip green">高客单转化</span>
+      </div>
+    </div>
+
+    <!-- 腾讯 -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">腾讯集团</div>
+          <div class="exp-role">用户增长</div>
+          <div class="exp-meta">CSIG事业群 · 北京</div>
+        </div>
+        <div class="exp-date">
+          <div class="exp-date-range">2020.07 — 2021.12</div>
+          <div class="exp-badge">离职</div>
+        </div>
+      </div>
+      <div class="exp-desc">负责初高中阶段企鹅辅导社群、公众号、个人号全域用户增长，搭建完整裂变增长闭环，主导节点活动策划与产品运营。</div>
+      <div class="exp-achievements">
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">01</div>
+          <div><strong style="color:var(--text)">私域矩阵搭建：</strong>搭建/迁移社群 <strong style="color:var(--accent)">3000+</strong>，沉淀私域用户 <strong style="color:var(--accent)">15万+</strong>，个人号好友 <strong style="color:var(--accent)">10万+</strong>，6个公众号矩阵总粉丝 <strong style="color:var(--accent)">40万+</strong>。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">02</div>
+          <div><strong style="color:var(--text)">裂变活动操盘：</strong>单场0元课最高报名 <strong style="color:var(--accent)">7000人</strong>，社群转化率 <strong style="color:var(--accent)">3.5%</strong>；元宵节H5裂变活动涨粉 2000+，活动参与人次 8000+。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">03</div>
+          <div><strong style="color:var(--text)">小程序 + 节点营销：</strong>世界读书日小程序总浏览量 <strong style="color:var(--accent)">13万+</strong>；操盘多个跨节点裂变活动，平均ROI 1:5+。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">04</div>
+          <div><strong style="color:var(--text)">产品运营负责人：</strong>担任古诗诵读课产品运营负责人，负责课程内容策划、用户运营、数据分析、迭代优化全链路。</div>
+        </div>
+      </div>
+      <div class="exp-highlights">
+        <span class="highlight-chip">腾讯CSIG</span>
+        <span class="highlight-chip blue">私域15万+用户</span>
+        <span class="highlight-chip green">裂变增长</span>
+      </div>
+    </div>
+
+    <!-- 作业帮 -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">作业帮 · F轮融资独角兽</div>
+          <div class="exp-role">内容运营</div>
+          <div class="exp-meta">平台 · 家长端</div>
+        </div>
+        <div class="exp-date">
+          <div class="exp-date-range">2018.03 — 2020.07</div>
+          <div class="exp-badge">离职</div>
+        </div>
+      </div>
+      <div class="exp-desc">负责作业帮家长版App内容运营，从0到1搭建家长端内容生态，承担用户增长、内容生产、社区运营、活动策划全模块。</div>
+      <div class="exp-achievements">
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">01</div>
+          <div><strong style="color:var(--text)">App从0到1：</strong>主导家长版App内容运营，7个月实现日活突破 <strong style="color:var(--accent)">100万</strong>；单期裂变活动新增用户 <strong style="color:var(--accent)">8000–12000</strong>人，月活稳定增长。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">02</div>
+          <div><strong style="color:var(--text)">极致获客成本：</strong>世界读书日H5裂变活动，单用户获客成本仅 <strong style="color:var(--accent)">0.2元</strong>，公众号涨粉 2500+，远低于行业平均水平。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">03</div>
+          <div><strong style="color:var(--text)">大V联动 + 知乎运营：</strong>联动 <strong style="color:var(--accent)">30–40家</strong>行业大V，主导2个核心话题总阅读超 <strong style="color:var(--accent)">360万</strong>；知乎从0起号涨粉1.3万，引流新用户 <strong style="color:var(--accent)">3万+</strong>。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">04</div>
+          <div><strong style="color:var(--text)">内容生产体系：</strong>搭建家长版编辑团队工作流，输出K12家长端干货内容，单篇最高阅读10W+，多篇进入百度搜索结果前列。</div>
+        </div>
+      </div>
+      <div class="exp-highlights">
+        <span class="highlight-chip">作业帮</span>
+        <span class="highlight-chip blue">日活100万</span>
+        <span class="highlight-chip green">0.2元获客</span>
+      </div>
+    </div>
+
+    <!-- 猿辅导 -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">猿辅导 · G2轮融资独角兽</div>
+          <div class="exp-role">内容运营</div>
+          <div class="exp-meta">小猿搜题 · 内容社区</div>
+        </div>
+        <div class="exp-date">
+          <div class="exp-date-range">2014.11 — 2018.03</div>
+          <div class="exp-badge">离职</div>
+        </div>
+      </div>
+      <div class="exp-desc">小猿搜题首批内容运营，从0到1搭建App内容社区与公众号矩阵，打造K12头部内容品牌。</div>
+      <div class="exp-achievements">
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">01</div>
+          <div><strong style="color:var(--text)">内容社区从0到1：</strong>独立搭建小猿搜题 App 首页内容社区运营机制，打开率从 <strong style="color:var(--accent)">5% → 14%</strong>，日均 PV <strong style="color:var(--accent)">130万</strong>，日均留言 <strong style="color:var(--accent)">3000+</strong>条。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">02</div>
+          <div><strong style="color:var(--text)">爆款打造：</strong>单篇最高阅读 <strong style="color:var(--accent)">90万</strong>，多篇10W+爆款；公众号 <strong style="color:var(--accent)">2.5个月</strong>涨粉3万，文章均打开率 <strong style="color:var(--accent)">5%</strong>，远超行业均值。</div>
+        </div>
+        <div class="exp-achievement">
+          <div class="exp-achievement-icon">03</div>
+          <div><strong style="color:var(--text)">用户互动机制：</strong>策划「每日话题」「学霸答疑」等用户互动栏目，培养种子用户 5000+，形成稳定UGC生态。</div>
+        </div>
+      </div>
+      <div class="exp-highlights">
+        <span class="highlight-chip">猿辅导</span>
+        <span class="highlight-chip blue">内容社区从0到1</span>
+        <span class="highlight-chip green">日PV130万</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div id="skills-inner">
+    <div class="section-label">专业技能</div>
+    <h2 class="section-title">不止会写，<br>还会「造工具」</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">✍️</span>
+        <div class="skill-name">全平台内容运营</div>
+        <div class="skill-desc">10年+ 全域内容实战，熟练操盘公众号、视频号、B站、知乎、小红书、抖音全平台。从选题策划到数据复盘，全链路独立操盘。</div>
+        <div class="skill-tags">
+          <span class="skill-tag">公众号</span><span class="skill-tag">B站</span><span class="skill-tag">知乎</span>
+          <span class="skill-tag">小红书</span><span class="skill-tag">视频号</span><span class="skill-tag">抖音</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🤖</span>
+        <div class="skill-name">AI 工具 · Vibe Coding</div>
+        <div class="skill-desc">熟练使用 Claude Code、AI 提示词工程；自主研发人脸识别 AI 程序实现视频自动化剪辑；具备 Python 编程能力，可独立完成爬虫、数据分析、工具开发。</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Prompt工程</span><span class="skill-tag">AI剪辑</span><span class="skill-tag">爬虫</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎬</span>
+        <div class="skill-name">视频剪辑 · 直播</div>
+        <div class="skill-desc">掌握 PR/AE 视频剪辑与特效；熟练使用 OBS + 直播平台进行推拉流、直播导播；全年执行 170+ 场直播，覆盖 Talks、公开课、赛事全品类。</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Premiere</span><span class="skill-tag">After Effects</span>
+          <span class="skill-tag">OBS</span><span class="skill-tag">直播导播</span><span class="skill-tag">PS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-name">英语 · 跨文化沟通</div>
+        <div class="skill-desc">英语六级 + 剑桥商务英语中级，可与外国教授日常邮件 / WeChat 沟通，处理英文品牌素材与规范文档，支持国际化内容项目。</div>
+        <div class="skill-tags">
+          <span class="skill-tag">CET-6</span><span class="skill-tag">剑桥BEC中级</span>
+          <span class="skill-tag">英文撰稿</span><span class="skill-tag">国际合作</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">作品集</div>
+  <h2 class="section-title">代表作品</h2>
+
+  <!-- Tab Nav -->
+  <div class="portfolio-tabs">
+    <button class="portfolio-tab active" onclick="switchTab(this,'tab-hot')">🔥 爆款内容</button>
+    <button class="portfolio-tab" onclick="switchTab(this,'tab-news')">📰 新闻 · 公关稿</button>
+    <button class="portfolio-tab" onclick="switchTab(this,'tab-ai')">🤖 AI教程</button>
+    <button class="portfolio-tab" onclick="switchTab(this,'tab-analysis')">📊 深度分析</button>
+    <button class="portfolio-tab" onclick="switchTab(this,'tab-books')">📚 书评 · 文化</button>
+  </div>
+
+  <!-- 爆款内容 -->
+  <div class="portfolio-panel active" id="tab-hot">
+    <div class="portfolio-grid">
+      <a href="https://www.zhihu.com/question/26009615/answer/803642103" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">知乎 · 商单</div>
+        <div class="portfolio-title">有哪些鲜为人知但很有意思的网站？</div>
+        <div class="portfolio-desc">前10条均为商单植入，自然带货，极高转化。</div>
+        <div class="portfolio-stat">阅读 <strong>500万</strong> · 点赞 <strong>5.5万</strong></div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/k4SeupsQJbCAygZFd_EOFQ" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">公众号 · iCANX作品集</div>
+        <div class="portfolio-title">内容运营作品集合辑</div>
+        <div class="portfolio-desc">涵盖AI科技、赛事活动、品牌传播、人物访谈等多类稿件，2年500余篇。</div>
+        <div class="portfolio-stat">原创 <strong>500+</strong>篇 · 阅读 <strong>35万+</strong></div>
+      </a>
+      <div class="portfolio-card" style="cursor:default">
+        <div class="portfolio-platform">小红书 · 黑马程序员</div>
+        <div class="portfolio-title">程序员延寿指南</div>
+        <div class="portfolio-desc">策划制作 IT 教育竖版短视频，选题精准打中程序员焦虑，引发广泛传播。</div>
+        <div class="portfolio-stat">单篇点赞 <strong>1万+</strong> · 全域分发</div>
+      </div>
+    </div>
+    <div class="portfolio-grid-2" style="margin-top:2px">
+      <a href="https://www.bilibili.com/video/BV1qW4y1a7fU/" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">B站 · 黑马程序员</div>
+        <div class="portfolio-title">Python 系列教学视频</div>
+        <div class="portfolio-desc">与讲师联合策划 Python 系列课程，打造平台爆款，搜索「python」关键词全站排名第二。</div>
+        <div class="portfolio-stat">最高播放 <strong>1200万</strong> · 全站排名 <strong>第二</strong></div>
+      </a>
+      <div class="portfolio-card" style="cursor:default">
+        <div class="portfolio-platform">小猿搜题 App · 内容社区</div>
+        <div class="portfolio-title">首页内容社区从0到1</div>
+        <div class="portfolio-desc">独立搭建内容体系与运营机制，打造多篇10W+爆款，单篇最高阅读90万，打开率5%→14%。</div>
+        <div class="portfolio-stat">日均PV <strong>130万</strong> · 日均留言 <strong>3000</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻公关 -->
+  <div class="portfolio-panel" id="tab-news">
+    <div class="portfolio-list">
+      <a href="http://www.news.cn/app/20241216/2d8ce795e0a744d4bb1644ac0bbfd238/c.html" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">新华网</div>
+        <div>逐梦数据未来 — 第四届中国移动"梧桐杯"数据应用赛道全国决赛落幕</div>
+      </a>
+      <a href="https://5gai.cctv.com/2026/03/25/ARTIHwkHRYlDGq6kPvp0AJl7260325.shtml" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">央视网</div>
+        <div>"九天·梧桐"杯智能体赛道全国决赛顺利举办，校企合作共育数智新力量</div>
+      </a>
+      <a href="https://biz.ifeng.com/c/8ezIBbfhV3L" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">凤凰网</div>
+        <div>创新护航数据安全 — 第四届中国移动"梧桐杯"数据安全赛道全国决赛收官</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/avALOSZUsdp-NxbUbiosZA" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">人物</div>
+        <div>X-Doctor | 水滴舞蹈：王钻开教授的仿生表面及其应用革新（人物访谈专栏，共39篇）</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/r3Lnrqh2B24Ky_flMgF1bg" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">活动</div>
+        <div>头狼创业营，打响第一枪！/ iCANX首秀日 | 大咖都来了，你来了吗？</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/bmDxKJZppsMPx4XLLmXhVw" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">科技</div>
+        <div>行业观察 | 具身智能崛起：机器人将如何融入我们的生活？</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AI教程 -->
+  <div class="portfolio-panel" id="tab-ai">
+    <div class="portfolio-grid">
+      <a href="https://mp.weixin.qq.com/s?__biz=Mzg4MDU2OTMyMQ==&mid=2247537825&idx=1&sn=3d5e89a0708228643f46bacb3ebd56fd&scene=21" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">公众号 · 2026年更新30余篇</div>
+        <div class="portfolio-title">太绝了！3分钟全自动发公众号！</div>
+        <div class="portfolio-desc">AI工作流教程，手把手教内容人用 AI 提效，深受读者好评。</div>
+        <div class="portfolio-stat">2026年 · AI教程系列</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=Mzk0NTcxNjE2MQ==&mid=2247489083&idx=1&sn=51fbf135021be97e565db4c005cbf98f&scene=21" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">公众号 · AI工具</div>
+        <div class="portfolio-title">小白福音！10分钟搞定 OpenClaw "龙虾"安装</div>
+        <div class="portfolio-desc">面向零基础用户的 AI 工具安装教程，步骤清晰，口碑极好。</div>
+        <div class="portfolio-stat">零基础向 · 实操教程</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/fuDXVUwLtBcFJj_1hgCcog" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">公众号 · 开发教程</div>
+        <div class="portfolio-title">零基础，上线你的第一个微信小程序</div>
+        <div class="portfolio-desc">Vibe Coding 实战教程，带非技术读者从0到1完成小程序上线。</div>
+        <div class="portfolio-stat">Vibe Coding · 实战</div>
+      </a>
+    </div>
+    <div class="portfolio-grid-2" style="margin-top:2px">
+      <a href="https://www.zhihu.com/question/1967183428639266693/answer/1967261381964305704" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">知乎 · AI分析</div>
+        <div class="portfolio-title">空降 OpenAI 智能体榜单第一名的 FM Agent 什么来头？</div>
+        <div class="portfolio-desc">及时跟进 AI 热点，深度分析行业动态，快速引发关注。</div>
+        <div class="portfolio-stat">知乎热榜 · 商单</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/WhDu0Purc-zC6nz9NmhVOg" target="_blank" class="portfolio-card">
+        <div class="portfolio-arrow">↗</div>
+        <div class="portfolio-platform">公众号 · Python教程</div>
+        <div class="portfolio-title">教你一招，如何用 Python 调用 ChatGPT 实现本地化聊天机器人</div>
+        <div class="portfolio-desc">技术 + 营销双属性文章，既引流又转化，课程销售利器。</div>
+        <div class="portfolio-stat">技术 + 营销双属性</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 深度分析 -->
+  <div class="portfolio-panel" id="tab-analysis">
+    <div class="portfolio-list">
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649155710&idx=1&sn=657feaac9cd3f79cf044692f3588c588&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">数据</div>
+        <div>分析了方文山 57000 多字的歌词之后，我找到了写好歌词的秘密（数据可视化）</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649155748&idx=1&sn=b5d3bf9376524dad31713077cef5101b&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">数据</div>
+        <div>国产电影烂片排行榜（数据分析 + 可视化）</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=Mzg4OTU0NDQyOA==&mid=2247547754&idx=1&sn=8084ba3537a47dd1be23cb36ad8ed64d&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">科技</div>
+        <div>世界科学咖啡 | 王田苗教授深度解读"具身智能"</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649155817&idx=1&sn=eabcb7d7b3b9459719071a712db30894&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">互联网</div>
+        <div>中年人的崩溃，往往是从吆喝卖货开始的 | 罗永浩的电商直播之路</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649155825&idx=1&sn=741510afa0c1e7546b1fb8c1a51cb3bb&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">营销</div>
+        <div>知妈乎上热搜！跨界营销知乎又玩出了新花样！</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649157858&idx=1&sn=f91dd36336d2856981957562fd71a378&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">科技</div>
+        <div>萝卜快跑抢了司机的工作？再过5年，无人驾驶将达到800万辆</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 书评文化 -->
+  <div class="portfolio-panel" id="tab-books">
+    <div class="portfolio-list">
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649158656&idx=1&sn=566bb50cbafaf291cf2c16c0473ebb76&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">AI</div>
+        <div>人工智能：从《最强大脑》到AGI时代 — 一个心理学教授写的AI通史为什么让我如此着迷</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649157618&idx=1&sn=07cea119344a75dbb9f10fb4831c9ab3&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">散文</div>
+        <div>"中国作协只养一个人，那也该是史铁生"</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649157687&idx=1&sn=ac379bd3a68a11d9a680bfc365f82b93&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">经典</div>
+        <div>明天又是另外一天了 — 读《飘》（进入豆瓣推荐，阅读8280）</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649157407&idx=1&sn=60ab49f362bc3b459f3ffc64a7691a4d&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">文学</div>
+        <div>"婚后生活很快变得痛苦，我们成了名义上的饭搭子。" — 评毛姆《面纱》</div>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&mid=2649158425&idx=1&sn=a965a1d9b10d136dbe1dbf70abcd7acc&scene=21" target="_blank" class="portfolio-list-item">
+        <div class="portfolio-list-num">物理</div>
+        <div>爱因斯坦写了本没有公式的物理书，却颠覆了我的世界观</div>
+      </a>
+      <div class="portfolio-list-item" style="cursor:default">
+        <div class="portfolio-list-num">豆瓣</div>
+        <div>豆瓣读书主页超过300篇书评，涵盖AI、心理学、经济学、世界名著等多领域</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<div id="contact-wrap" data-section="contact" style="scroll-margin-top:0">
+  <div id="contact-inner">
+    <div>
+      <div class="section-label">联系我</div>
+      <div class="contact-big">期待与你<br>一起<span>做好内容</span></div>
+      <div class="contact-sub">在职求职中，意向岗位：内容运营 / 新媒体运营<br>期望薪资：16k–20k · 工作地点：北京</div>
+      <div class="contact-links">
+        <a href="mailto:1530575467@qq.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div>
+            <span class="contact-link-label">邮箱</span>
+            1530575467@qq.com
+          </div>
+        </a>
+        <a href="tel:13041242172" class="contact-link">
+          <div class="contact-link-icon">☎</div>
+          <div>
+            <span class="contact-link-label">电话</span>
+            130 4124 2172
+          </div>
+        </a>
+        <a href="https://www.zhihu.com/people/yuan_xing_ke" target="_blank" class="contact-link">
+          <div class="contact-link-icon" style="font-size:13px;font-weight:700;background:rgba(59,130,246,0.15);color:#60a5fa;">知乎</div>
+          <div>
+            <span class="contact-link-label">知乎</span>
+            忽如远行客 · 14万粉丝
+          </div>
+        </a>
+        <a href="https://space.bilibili.com/59190484" target="_blank" class="contact-link">
+          <div class="contact-link-icon" style="font-size:13px;font-weight:700;background:rgba(6,182,212,0.15);color:#06b6d4;">B站</div>
+          <div>
+            <span class="contact-link-label">B站</span>
+            偶尔也读书 · 8.2万粉丝
+          </div>
+        </a>
+        <a href="https://github.com/jiawen-w" target="_blank" class="contact-link">
+          <div class="contact-link-icon" style="font-size:13px;font-weight:700;background:rgba(245,166,35,0.15);color:var(--accent);">Git</div>
+          <div>
+            <span class="contact-link-label">GitHub · Coding 能力证明</span>
+            github.com/jiawen-w
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-info-box">
+      <div class="info-row">
+        <div class="info-label">求职状态</div>
+        <div class="info-value accent">在职求职中</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">意向岗位</div>
+        <div class="info-value">内容运营 / 新媒体运营</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">期望薪资</div>
+        <div class="info-value">16k – 20k</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">工作地点</div>
+        <div class="info-value">北京</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">教育背景</div>
+        <div class="info-value">河北科技大学 · 本科<br><span style="color:var(--text3);font-size:13px">金属材料工程 · 2010–2014</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">语言能力</div>
+        <div class="info-value" style="font-size:14px">英语六级 + 剑桥BEC中级</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 陈佳文 · 内容运营</div>
+  <div>10年+ 经验 · 全域内容 · AI 加持</div>
+</footer>
+
+<script>
+// Portfolio tab switching
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.portfolio-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.portfolio-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+// Count-up animation
+function animateCountUp(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  const isDecimal = target % 1 !== 0;
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = target * eased;
+    el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Intersection Observer for count-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      animateCountUp(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.count-up').forEach(el => observer.observe(el));
+
+// Smooth reveal on scroll
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.exp-item, .matrix-card, .skill-card, .portfolio-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>

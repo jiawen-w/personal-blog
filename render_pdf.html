@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+</head>
+<body>
+<canvas id="c1"></canvas>
+<canvas id="c2"></canvas>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+async function render() {
+  const response = await fetch('uploads/resume2.pdf');
+  const data = await response.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data}).promise;
+  console.log('Pages:', pdf.numPages);
+  for (let i = 1; i <= Math.min(2, pdf.numPages); i++) {
+    const page = await pdf.getPage(i);
+    const viewport = page.getViewport({scale: 1.5});
+    const canvas = document.getElementById('c' + i);
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    await page.render({canvasContext: canvas.getContext('2d'), viewport}).promise;
+    console.log('Rendered page', i);
+    
+    // Also try text extraction
+    const textContent = await page.getTextContent();
+    const text = textContent.items.map(i => i.str).join(' ');
+    console.log('Text page', i, ':', text.substring(0, 500));
+  }
+}
+render();
+</script>
+</body>
+</html>
