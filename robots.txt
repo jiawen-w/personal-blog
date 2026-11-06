@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+
+Sitemap: https://jiawen-w.github.io/personal-blog/sitemap.xml
