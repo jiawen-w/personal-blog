@@ -400,6 +400,11 @@
     font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft);
   }
   .portfolio-list-item .ext { margin-left: auto; color: var(--text-3); flex-shrink: 0; }
+  .portfolio-list-item .reads { margin-left: auto; flex-shrink: 0; font-size: 13px; color: var(--text-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .portfolio-list-item .reads strong { color: var(--accent); font-size: 14px; }
+  .panel-note { font-size: 14px; color: var(--text-3); margin: 0 0 14px; }
+  .panel-note strong { color: var(--text); }
+  .portfolio-list.after-grid { margin-top: 16px; }
 
   /* ─── 联系 ─── */
   .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
@@ -494,6 +499,7 @@
     .portfolio-tabs { width: auto; max-width: none; margin-inline: calc(var(--gutter) * -1); border-radius: 0; border-inline: 0; padding-inline: var(--gutter); }
     .portfolio-list-item { flex-direction: column; gap: 6px; padding: 14px 12px; }
     .portfolio-list-item .ext { display: none; }
+    .portfolio-list-item .reads { margin-left: 0; }
     .info-row { grid-template-columns: 76px 1fr; }
     .btn-contact-nav { display: none; }
     dialog.modal { padding: 32px 20px 22px; }
@@ -531,6 +537,7 @@
       <li><a href="#skills">技能</a></li>
       <li><a href="#portfolio">作品</a></li>
       <li><a href="#contact">联系</a></li>
+      <li><a href="parttime.html">兼职合作</a></li>
       <li><a href="https://github.com/jiawen-w" target="_blank" rel="noopener">GitHub ↗</a></li>
     </ul>
     <div class="nav-actions">
@@ -577,6 +584,7 @@
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" data-open-contact>联系我</button>
         <a href="#experience" class="btn btn-outline">查看经历 ↓</a>
+        <a href="parttime.html" class="btn btn-outline">兼职约稿 →</a>
       </div>
     </div>
     <figure class="hero-photo">
@@ -916,7 +924,8 @@
 
   <!-- Tab Nav -->
   <div class="portfolio-tabs" role="tablist" aria-label="作品分类">
-    <button class="portfolio-tab" type="button" role="tab" id="btn-tab-hot" aria-controls="tab-hot" aria-selected="true" tabindex="0"><span aria-hidden="true">🔥</span> 爆款内容</button>
+    <button class="portfolio-tab" type="button" role="tab" id="btn-tab-industry" aria-controls="tab-industry" aria-selected="true" tabindex="0"><span aria-hidden="true">🔬</span> 产业报道</button>
+    <button class="portfolio-tab" type="button" role="tab" id="btn-tab-hot" aria-controls="tab-hot" aria-selected="false" tabindex="-1"><span aria-hidden="true">🔥</span> 爆款内容</button>
     <button class="portfolio-tab" type="button" role="tab" id="btn-tab-news" aria-controls="tab-news" aria-selected="false" tabindex="-1"><span aria-hidden="true">📰</span> 新闻 · 公关稿</button>
     <button class="portfolio-tab" type="button" role="tab" id="btn-tab-ai" aria-controls="tab-ai" aria-selected="false" tabindex="-1"><span aria-hidden="true">🤖</span> AI教程</button>
     <button class="portfolio-tab" type="button" role="tab" id="btn-tab-analysis" aria-controls="tab-analysis" aria-selected="false" tabindex="-1"><span aria-hidden="true">📊</span> 深度分析</button>
@@ -924,7 +933,59 @@
   </div>
 
   <!-- 爆款内容 -->
-  <div class="portfolio-panel" id="tab-hot" role="tabpanel" aria-labelledby="btn-tab-hot">
+  <!-- 产业报道 -->
+  <div class="portfolio-panel" id="tab-industry" role="tabpanel" aria-labelledby="btn-tab-industry">
+    <p class="panel-note">个人公众号「偶尔也读书」（1.2万粉丝）· 2026年7–8月 · 芯片 / AI / 具身智能与机器人产业报道，<strong>单篇最高阅读 18.4万</strong></p>
+    <div class="card portfolio-list">
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158922&amp;idx=1&amp;sn=d206919adc0d268f06b32a6dae12fb63&amp;chksm=83243c01b453b51713edafbfda293b5e0b527faa41352dd9bc4876b1207fd5fa740420c90b04#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">芯片</div>
+        <div>清华一个班，撑起了半个中国芯片</div>
+        <span class="reads">阅读 <strong>18.4万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158965&amp;idx=1&amp;sn=af051dd390c4948dff27aebcbbc7e2c7&amp;chksm=83243c3eb453b528ded8dd6b7824abcb998613d4a3130358e509d83390b8cdc489804baa1af8#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">AI</div>
+        <div>梁文锋的学弟们，浙大系排队敲钟</div>
+        <span class="reads">阅读 <strong>11.4万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158872&amp;idx=1&amp;sn=4f273d09519e3c55163042635bc67ef3&amp;chksm=83243dd3b453b4c5d3867788e7d731d9cecc6838f974ae1fe504d81912e56021829e81e0dc64#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">AI</div>
+        <div>一个班，二十年，半个中国AI天团</div>
+        <span class="reads">阅读 <strong>3.9万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158934&amp;idx=1&amp;sn=82ad78363ad4f3d700b673b9426be1fc&amp;chksm=83243c1db453b50bb9a9bf57f0b9a2c98b62f0292fcbf6871c190aceca6ab51d88b0e0283d55#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">芯片</div>
+        <div>AMD和英伟达，偷偷养大了国产GPU四小龙</div>
+        <span class="reads">阅读 <strong>2.8万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649159064&amp;idx=1&amp;sn=1186a5f9f93f099492a16fb4687ec9c0&amp;chksm=83243c93b453b585664613036351405e486088dcd53081eee18a6b12be725edf45be17913ba6#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">AI</div>
+        <div>中国的AI大模型，要被清华包圆了</div>
+        <span class="reads">阅读 <strong>1.2万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158945&amp;idx=1&amp;sn=4ac16ee40acfb0a2e693be1a16ed2fcc&amp;chksm=83243c2ab453b53c677d2eba82a94a8fb318e0e43ed755d464c840ef3103318cbf434bf4f016#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">芯片</div>
+        <div>华为海思的黄埔军校，和那个偷技术进监狱的人</div>
+        <span class="reads">阅读 <strong>1万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158795&amp;idx=1&amp;sn=445d24c13357afffb78ec03df48fc3df&amp;chksm=83243d80b453b4967d8c29e7f78a682e06848f80b72c7212ab89910217b2dfcdd4cabd97d9f7#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">机器人</div>
+        <div>IPO前夜｜智元机器人的来时路</div>
+        <span class="reads">阅读 <strong>3875</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649158897&amp;idx=1&amp;sn=925ab07807c9120ab009a4038dfab038&amp;chksm=83243dfab453b4ec86c7f6653340fad9245bd6a8c60e9d11eee860341a5815c6e74de7b83739#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">机器人</div>
+        <div>清华3年孵出6个百亿机器人独角兽，凭什么？</div>
+        <span class="reads">阅读 <strong>3433</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s?__biz=MzAwMzc1MjAzNg==&amp;mid=2649159010&amp;idx=1&amp;sn=a210ee2bc6dfdd83e8485c756e52480e&amp;chksm=83243c69b453b57ffe8733088c1a5a59de58192817f1c7c3b7ccab883666f73a7468add83b6f#rd" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">人物</div>
+        <div>诺奖得主退场：哈萨比斯在谷歌的十六年与最后自救</div>
+        <span class="reads">阅读 <strong>3149</strong></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="portfolio-panel" id="tab-hot" role="tabpanel" aria-labelledby="btn-tab-hot" hidden>
     <div class="portfolio-grid">
       <a href="https://www.zhihu.com/question/26009615/answer/803642103" target="_blank" rel="noopener" class="card portfolio-card">
         <div class="portfolio-arrow" aria-hidden="true">↗</div>
@@ -967,6 +1028,11 @@
   <!-- 新闻公关 -->
   <div class="portfolio-panel" id="tab-news" role="tabpanel" aria-labelledby="btn-tab-news" hidden>
     <div class="card portfolio-list">
+      <a href="https://icanx2007.feishu.cn/wiki/TvQSwiDw7iSSUJkIkXQcoTJhnPg" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">结案</div>
+        <div>2026年7月 · 品牌活动媒体宣发全案（独立负责撰稿、协调、排版发布；覆盖公众号 / 小红书 / 知乎 / 抖音 / 外部媒体 / 记者到场 / 直播，曝光千万级）</div>
+        <span class="ext" aria-hidden="true">↗</span>
+      </a>
       <a href="http://www.news.cn/app/20241216/2d8ce795e0a744d4bb1644ac0bbfd238/c.html" target="_blank" rel="noopener" class="portfolio-list-item">
         <div class="portfolio-list-num">新华网</div>
         <div>逐梦数据未来 — 第四届中国移动"梧桐杯"数据应用赛道全国决赛落幕</div>
@@ -1039,6 +1105,28 @@
         <div class="portfolio-title">教你一招，如何用 Python 调用 ChatGPT 实现本地化聊天机器人</div>
         <div class="portfolio-desc">技术 + 营销双属性文章，既引流又转化，课程销售利器。</div>
         <div class="portfolio-stat">技术 + 营销双属性</div>
+      </a>
+    </div>
+    <div class="card portfolio-list after-grid">
+      <a href="https://mp.weixin.qq.com/s/Jttlrq5LQRrnWf-MOpl4Uw" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">2026</div>
+        <div>ChatGPT 杀进 PowerPoint，附实操</div>
+        <span class="reads">阅读 <strong>2.6万</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/Jvhpylt7U-FMp13jkZBzpQ" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">2026</div>
+        <div>Codex 完整实战教程，全能的生产力工具</div>
+        <span class="reads">阅读 <strong>4544</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/x83YlZPziDPqjY_oU-a1Tw" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">2026</div>
+        <div>Hermes 的原生桌面应用来了，附实操！</div>
+        <span class="reads">阅读 <strong>3627</strong></span>
+      </a>
+      <a href="https://mp.weixin.qq.com/s/L_9cVf8_BT56v06aJtCCQQ" target="_blank" rel="noopener" class="portfolio-list-item">
+        <div class="portfolio-list-num">2026</div>
+        <div>数字生命卡兹克：我为什么会做AI自媒体？</div>
+        <span class="reads">阅读 <strong>625</strong></span>
       </a>
     </div>
   </div>
