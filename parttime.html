@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>陈佳文 · 兼职撰稿 / 内容编辑 | AI · 硬科技 · 活动宣发</title>
-<meta name="description" content="陈佳文，10年+ 内容经验，承接兼职撰稿与内容编辑：AI 工具教程、芯片 / 具身智能 / 机器人产业稿、活动媒体宣发、读书书评。近三个月产业稿单篇最高阅读 18.4万。按篇计费，按月合作可议。">
+<meta name="description" content="陈佳文，10年+ 内容经验，承接兼职撰稿、内容运营与账号代运营：AI 工具测评、芯片 / 具身智能 / AI行业产业稿、活动媒体宣发、读书书评。个人自媒体矩阵粉丝 26万+，产业稿单篇最高阅读 18.4万。按篇计费，按月合作可议。">
 <link rel="canonical" href="https://jiawen-w.github.io/personal-blog/parttime.html">
 <meta name="theme-color" content="#faf8f4">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="陈佳文 · 兼职撰稿 / 内容编辑">
-<meta property="og:description" content="AI 教程 · 芯片 / 具身智能产业稿 · 活动宣发 · 书评｜单篇最高阅读 18.4万｜按篇计费，按月可议">
+<meta property="og:description" content="撰稿 · 内容运营 · 账号代运营｜自媒体矩阵粉丝 26万+｜产业稿单篇最高阅读 18.4万｜按篇计费，按月可议">
 <meta property="og:url" content="https://jiawen-w.github.io/personal-blog/parttime.html">
 <meta property="og:image" content="https://jiawen-w.github.io/personal-blog/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,6 +78,14 @@
   .services li::before { content: ''; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--accent-fill); }
   .services strong { color: var(--text); }
 
+  .accounts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; }
+  .accounts a { display: block; height: 100%; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; text-decoration: none; }
+  .accounts a:hover { border-color: var(--accent-fill); }
+  .accounts .top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .accounts .name { font-size: 15px; font-weight: 700; }
+  .accounts .fans { font-family: var(--font-num); font-size: 22px; font-weight: 800; color: var(--accent); white-space: nowrap; }
+  .accounts .fans small { font-family: var(--font-sans); font-size: 12px; font-weight: 500; color: var(--text-3); margin-left: 2px; }
+  .accounts p { margin-top: 4px; font-size: 13.5px; color: var(--text-2); }
   .works { list-style: none; border-top: 1px solid var(--border); }
   .works li { border-bottom: 1px solid var(--border); }
   .works a { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: baseline; padding: 9px 4px; text-decoration: none; }
@@ -114,7 +122,7 @@
     h2 { flex-wrap: wrap; row-gap: 2px; }
     h2 small { flex-basis: 100%; margin-left: 15px; }
     .stats { grid-template-columns: 1fr 1fr; }
-    .price, .services { grid-template-columns: 1fr; }
+    .price, .services, .accounts { grid-template-columns: 1fr; }
     .works a { grid-template-columns: 1fr auto; row-gap: 2px; }
     .works .tag { grid-column: 1 / -1; justify-self: start; }
     .meta time { display: none; }
@@ -124,7 +132,7 @@
   @page { size: A4; margin: 12mm 12mm 14mm; }
   @media print {
     :root { --bg: #fff; --surface: #fff; --surface-2: #f6f3ed; --border: #e3ddd2; --text: #111; --text-2: #3d3a45; --text-3: #6b6776; --accent: #9a5600; color-scheme: light; }
-    body { font-size: 10pt; line-height: 1.45; }
+    body { font-size: 9.5pt; line-height: 1.4; zoom: .92; }
     header.head { padding-bottom: 12px; }
     .photo { width: 64px; height: 80px; margin-bottom: 4px; }
     .contact { line-height: 1.6; }
@@ -137,14 +145,20 @@
     .topbar, .no-print { display: none !important; }
     .page { padding: 0; max-width: none; }
     .sheet { border: 0; box-shadow: none; padding: 0; border-radius: 0; }
-    section { margin-top: 12px; break-inside: auto; }
+    section { margin-top: 10px; break-inside: auto; }
     h2 { font-size: 14pt; margin-bottom: 8px; break-after: avoid; }
-    .works a { padding: 2.5px 2px; }
-    .t { font-size: 10pt; }
+    .works a { padding: 1.5px 2px; }
+    .t { font-size: 9.5pt; }
     .case, .price > div, .stat { break-inside: avoid; }
     .stats { margin: 14px 0 0; }
     .stat b { font-size: 17pt; }
     a { text-decoration: none; }
+    .accounts { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .accounts a { padding: 8px 10px; break-inside: avoid; }
+    .accounts .top { display: block; }
+    .accounts .name { display: block; font-size: 9.5pt; }
+    .accounts .fans { font-size: 15pt; }
+    .accounts p { font-size: 8.5pt; line-height: 1.4; }
   }
 </style>
 </head>
@@ -162,8 +176,8 @@
     <header class="head">
       <div>
         <h1>陈佳文</h1>
-        <p class="role">兼职撰稿 / 内容编辑</p>
-        <p class="fields">AI 工具教程 · 芯片 / 具身智能 / 机器人产业稿 · 活动媒体宣发 · 读书书评</p>
+        <p class="role">兼职撰稿 / 内容运营 / 新媒体账号运营</p>
+        <p class="fields">AI 工具测评 · 芯片 / 具身智能 / AI行业产业稿 · 账号代运营 · 活动宣发 · 书评</p>
         <p class="status">在职 · 业余时间远程接稿 · 北京</p>
       </div>
       <div>
@@ -180,11 +194,33 @@
     </header>
 
     <div class="stats">
-      <div class="stat"><b>18.4万</b><span>近3月单篇最高阅读</span></div>
+      <div class="stat"><b>26万+</b><span>个人自媒体矩阵粉丝</span></div>
+      <div class="stat"><b>18.4万</b><span>产业稿单篇最高阅读</span></div>
       <div class="stat"><b>10年+</b><span>内容运营 / 编辑经验</span></div>
-      <div class="stat"><b>1000+</b><span>累计原创稿件</span></div>
       <div class="stat"><b>千万级</b><span>单次活动宣发曝光</span></div>
     </div>
+
+    <section aria-labelledby="h-accounts">
+      <h2 id="h-accounts">个人自媒体矩阵 <small>独立运营 · 总粉丝 26万+</small></h2>
+      <ul class="accounts">
+        <li><a href="https://www.zhihu.com/people/yuan_xing_ke" target="_blank" rel="noopener">
+          <div class="top"><span class="name">知乎 · 忽如远行客</span><span class="fans">14万<small>粉丝</small></span></div>
+          <p>科技 / AI / 认知领域，总阅读 4000万；热门回答单篇 500万阅读、5.5万赞</p>
+        </a></li>
+        <li><a href="https://space.bilibili.com/59190484" target="_blank" rel="noopener">
+          <div class="top"><span class="name">B站 · 偶尔也读书</span><span class="fans">8.2万<small>粉丝</small></span></div>
+          <p>读书 / 职场 / 数据分析视频，单视频最高 59万播放</p>
+        </a></li>
+        <li><a href="https://www.xiaohongshu.com/user/profile/61c463f9000000001000eff9" target="_blank" rel="noopener">
+          <div class="top"><span class="name">小红书 · 3 个账号</span><span class="fans">3.6万+<small>粉丝</small></span></div>
+          <p>英语 / 时尚 / 文化；自研 Python 人脸识别程序自动剪辑发布，均播放 5000+</p>
+        </a></li>
+        <li><a href="https://mp.weixin.qq.com/s/TCeHKlfBd4zCe9mxrYEJ6Q" target="_blank" rel="noopener">
+          <div class="top"><span class="name">公众号 · 偶尔也读书</span><span class="fans">1.2万<small>粉丝</small></span></div>
+          <p>读书 / 产业稿，2026年7–8月产业稿单篇最高 18.4万阅读</p>
+        </a></li>
+      </ul>
+    </section>
 
     <section aria-labelledby="h-price">
       <h2 id="h-price">合作方式</h2>
@@ -194,7 +230,7 @@
           <p>按选题、篇幅与调研量报价，下单前确认需求与交稿时间。</p>
           <ul>
             <li>产业 / 科技深度稿、人物稿</li>
-            <li>AI 工具实操教程（含截图演示）</li>
+            <li>AI 工具实测测评（含截图演示）</li>
             <li>新闻稿、活动稿、书评文化稿</li>
           </ul>
         </div>
@@ -202,7 +238,7 @@
           <h3>按月合作<em>可议</em></h3>
           <p>固定篇数或长期栏目，按月打包，价格面议。</p>
           <ul>
-            <li>公众号代写 + 排版发布</li>
+            <li>账号代运营：选题、发布、涨粉与数据复盘</li>
             <li>多平台分发（公众号 / 小红书 / 知乎 / 抖音）</li>
             <li>活动宣发全案：新闻稿、媒体对接、直播配合</li>
           </ul>
@@ -215,9 +251,10 @@
       <h2 id="h-skill">能为你做什么</h2>
       <ul class="services">
         <li><strong>产业深度稿：</strong>芯片、AI 大模型、具身智能与机器人，擅长“人物 + 产业脉络”的叙事，标题有传播力</li>
-        <li><strong>AI 教程：</strong>ChatGPT、Codex、Claude Code 等工具实测实操，零基础也能看懂</li>
+        <li><strong>AI 测评：</strong>ChatGPT、Codex、Claude Code 等工具实测实操，零基础也能看懂</li>
+        <li><strong>账号运营：</strong>公众号、B站、知乎、小红书、视频号起号与日常运营；曾操盘 6 个公众号矩阵 40万+ 粉丝，iCANX 粉丝 1.5万→3.08万</li>
         <li><strong>活动宣发：</strong>独立完成撰稿、沟通协调、排版发布，统筹公众号、小红书、知乎、抖音、外部媒体与直播</li>
-        <li><strong>书评 / 文化：</strong>豆瓣 300+ 篇书评，公众号文章曾进入豆瓣推荐</li>
+        <li><strong>书评 / 文化：</strong>豆瓣 300+ 篇书评，豆瓣书评曾进入豆瓣推荐</li>
       </ul>
     </section>
 
@@ -254,32 +291,47 @@
       </ul>
     </section>
 
-    <section aria-labelledby="h-ai">
-      <h2 id="h-ai">AI 教程 <small>公众号 &amp; 知乎 · 阅读数</small></h2>
+    <section aria-labelledby="h-xinghai">
+      <h2 id="h-xinghai">产业约稿 <small>公众号「星海情报局」· 2026年9–10月</small></h2>
       <ul class="works">
-        <li><a href="https://mp.weixin.qq.com/s/Jttlrq5LQRrnWf-MOpl4Uw" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">ChatGPT 杀进 PowerPoint，附实操</span><span class="meta"><b>2.6万</b></span>
+        <li><a href="https://mp.weixin.qq.com/s/mBJnapT5U2hEjfIivsYzDA" target="_blank" rel="noopener">
+          <span class="tag">产业</span><span class="t">为什么这些大厂都想去插手养猪这件事？</span><span class="meta"><time>10.21</time><b>5.8万</b></span>
         </a></li>
-        <li><a href="https://mp.weixin.qq.com/s/Jvhpylt7U-FMp13jkZBzpQ" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">Codex 完整实战教程，全能的生产力工具</span><span class="meta"><b>4544</b></span>
+        <li><a href="https://mp.weixin.qq.com/s/TzPKROzF8_rDMKV33oD6MA" target="_blank" rel="noopener">
+          <span class="tag">AI</span><span class="t">AI 学会拆软件了，闭源软件靠「看不懂」守了二十年的墙，开始漏风了</span><span class="meta"><time>10.12</time><b>5.6万</b></span>
         </a></li>
-        <li><a href="https://mp.weixin.qq.com/s/x83YlZPziDPqjY_oU-a1Tw" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">Hermes 的原生桌面应用来了，附实操！</span><span class="meta"><b>3627</b></span>
+        <li><a href="https://mp.weixin.qq.com/s/04NZAoPVbYz2LQ7urdWqpg" target="_blank" rel="noopener">
+          <span class="tag">AI</span><span class="t">25名菲尔兹奖获得者联名开怼，AI动了谁的蛋糕？</span><span class="meta"><time>09.14</time><b>4.8万</b></span>
         </a></li>
-        <li><a href="https://mp.weixin.qq.com/s/L_9cVf8_BT56v06aJtCCQQ" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">数字生命卡兹克：我为什么会做AI自媒体？</span><span class="meta"><b>625</b></span>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-ai">
+      <h2 id="h-ai">AI 测评 <small>公众号 &amp; 知乎 · 阅读数</small></h2>
+      <ul class="works">
+        <li><a href="https://mp.weixin.qq.com/s?__biz=MzcwOTQ1OTY3Mg==&amp;mid=2247490129&amp;idx=1&amp;sn=5e8b371dcc2da000e0672fd609ca03f2" target="_blank" rel="noopener">
+          <span class="tag">测评</span><span class="t">ChatGPT 杀进 PowerPoint，附实操</span><span class="meta"><b>2.6万</b></span>
+        </a></li>
+        <li><a href="https://mp.weixin.qq.com/s?__biz=MzcwOTQ1OTY3Mg==&amp;mid=2247490117&amp;idx=1&amp;sn=750474d55254eb3ec5e1f669924b777f" target="_blank" rel="noopener">
+          <span class="tag">测评</span><span class="t">Codex 完整实战教程，全能的生产力工具</span><span class="meta"><b>4544</b></span>
+        </a></li>
+        <li><a href="https://mp.weixin.qq.com/s?__biz=MzcwOTQ1OTY3Mg==&amp;mid=2247490136&amp;idx=1&amp;sn=20b80f7d039c471863f9a760fc6da687" target="_blank" rel="noopener">
+          <span class="tag">测评</span><span class="t">Hermes 的原生桌面应用来了，附实操！</span><span class="meta"><b>3627</b></span>
+        </a></li>
+        <li><a href="https://mp.weixin.qq.com/s?__biz=MzcwOTQ1OTY3Mg==&amp;mid=2247490157&amp;idx=1&amp;sn=b8f1fa1271350f021584ffb047998547" target="_blank" rel="noopener">
+          <span class="tag">测评</span><span class="t">数字生命卡兹克：我为什么会做AI自媒体？</span><span class="meta"><b>625</b></span>
         </a></li>
         <li><a href="https://mp.weixin.qq.com/s?__biz=Mzg4MDU2OTMyMQ==&amp;mid=2247537825&amp;idx=1&amp;sn=3d5e89a0708228643f46bacb3ebd56fd&amp;scene=21" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">太绝了！3分钟全自动发公众号！</span><span class="meta"><em>AI工作流</em></span>
+          <span class="tag">测评</span><span class="t">太绝了！3分钟全自动发公众号！</span><span class="meta"><em>AI工作流</em></span>
         </a></li>
-        <li><a href="https://mp.weixin.qq.com/s?__biz=Mzk0NTcxNjE2MQ==&amp;mid=2247489083&amp;idx=1&amp;sn=51fbf135021be97e565db4c005cbf98f&amp;scene=21" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">小白福音！10分钟搞定 OpenClaw “龙虾”安装</span><span class="meta"><em>零基础</em></span>
+        <li><a href="https://mp.weixin.qq.com/s?__biz=MzcwOTQ1OTY3Mg==&amp;mid=2247490215&amp;idx=1&amp;sn=bcafc8a1e1dd53212daebb0d102573be" target="_blank" rel="noopener">
+          <span class="tag">测评</span><span class="t">小白福音！10分钟搞定 OpenClaw “龙虾”安装</span><span class="meta"><em>零基础</em></span>
         </a></li>
         <li><a href="https://mp.weixin.qq.com/s/fuDXVUwLtBcFJj_1hgCcog" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">零基础，上线你的第一个微信小程序</span><span class="meta"><em>Vibe Coding</em></span>
+          <span class="tag">测评</span><span class="t">零基础，上线你的第一个微信小程序</span><span class="meta"><em>Vibe Coding</em></span>
         </a></li>
         <li><a href="https://www.zhihu.com/question/1967183428639266693/answer/1967261381964305704" target="_blank" rel="noopener">
-          <span class="tag">教程</span><span class="t">空降 OpenAI 智能体榜单第一名的 FM Agent 什么来头？</span><span class="meta"><em>知乎热榜</em></span>
+          <span class="tag">测评</span><span class="t">空降 OpenAI 智能体榜单第一名的 FM Agent 什么来头？</span><span class="meta"><em>知乎热榜</em></span>
         </a></li>
       </ul>
     </section>
@@ -313,7 +365,7 @@
     <section aria-labelledby="h-exp">
       <h2 id="h-exp">经历简表</h2>
       <ul class="timeline">
-        <li><time>2023.12 — 至今</time><span><b>艾瞰未来 · 内容运营经理</b>　AI 与科技赛事内容，2年+ 原创 500余篇，年执行直播 170+ 场</span></li>
+        <li><time>2023.12 — 至今</time><span><b>艾瞰未来 · 内容运营经理</b>　AI 与科技赛事内容，2年+ 原创 500余篇；iCANX 粉丝 1.5万→3.08万；年执行直播 170+ 场</span></li>
         <li><time>2022.01 — 2023.10</time><span><b>传智教育（黑马程序员）· 内容运营</b>　全平台运营，B站单条最高播放 1200万</span></li>
         <li><time>2020.07 — 2021.12</time><span><b>腾讯 CSIG · 用户增长</b>　私域用户 15万+，公众号矩阵 40万+ 粉丝</span></li>
         <li><time>2018.03 — 2020.07</time><span><b>作业帮 · 内容运营</b>　家长版 App 内容从0到1，7个月日活破百万</span></li>
